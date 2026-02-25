@@ -1,0 +1,165 @@
+
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Recipe Collection</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #f8c8dc, #ffe5b4);
+            text-align: center;
+        }
+
+        h1 {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.6);
+            margin: 0;
+            font-size: 40px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide img {
+    width: 100%;
+    max-height: 450px;   /* controls size */
+    object-fit: contain; /* shows full image */
+    border-radius: 20px;
+    cursor: pointer;
+    background: white;   /* makes empty space look clean */
+}
+
+        .slide img:hover {
+            transform: scale(1.05);
+        }
+
+        .slide h2 {
+            margin-top: 15px;
+            background: #ec7387;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            font-size: 22px;
+            border-radius: 50%;
+        }
+
+        .prev { left: -60px; }
+        .next { right: -60px; }
+
+        .prev:hover, .next:hover {
+            background-color: #ec7387;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(255,255,255,0.6);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🍴 My Recipe Collection 🍹</h1>
+
+
+    <div class="slideshow-container">
+
+        <div class="slide active">
+            <a href="Margarita.html">
+                <img src="margarita.jpg" alt="Classic Margarita">
+            </a>
+            <h2>Classic Margarita</h2>
+        </div>
+
+        <div class="slide">
+            <a href="StrawberryColada.html">
+                <img src="strawberry colada.jpg" alt="Strawberry Colada">
+            </a>
+            <h2>Strawberry Colada</h2>
+        </div>
+
+        <div class="slide">
+            <a href="Spaghetti.html">
+                <img src="espagueti-blanco.webp" alt="Spaghetti">
+            </a>
+            <h2>Creamy Ham Spaghetti</h2>
+        </div>
+
+        <div class="slide">
+            <a href="Beef Tacos.html">
+                <img src="tacos.jpeg" alt="Tacos">
+            </a>
+            <h2>Mexican Tacos</h2>
+        </div>
+
+        <button class="prev" onclick="changeSlide(-1)">❮</button>
+        <button class="next" onclick="changeSlide(1)">❯</button>
+
+    </div>
+
+    <footer>
+        © 2026 My Interactive Recipe Website
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            showSlide(currentSlide);
+        }
+
+        showSlide(currentSlide);
+    </script>
+
+</body>
+</html>
